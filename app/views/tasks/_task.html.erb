@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div class="todo_item">
-      <p style="opacity: 0.4;"><strike><%= task.content %></strike></p>
+      <p style="opacity: 0.4;"><strike><%= link_to task.content, edit_project_task_path(@project, task.id) %></strike></p>
     </div>
     <div class="trash">
       <%= link_to project_task_path(@project, task.id), method: :delete, data: { confirm: "Are you sure" } do %>
@@ -20,12 +20,12 @@
       <% end %>
     </div>
     <div class="todo_item">
-      <p><%= task.content %></p>
+      <p><%= link_to task.content, edit_project_task_path(@project, task.id) %></p>
     </div>
     <div class="trash">
       <%= link_to project_task_path(@project, task.id), method: :delete, data: { confirm: "Are you sure" } do %>
         <i class="fa fa-trash"></i>
       <% end %>
     </div>
-  <% end %>  
+  <% end %> 
 </div>

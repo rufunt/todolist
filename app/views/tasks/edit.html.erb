@@ -1,0 +1,8 @@
+<h1 class="todo_list_title">Edit Task</h1>  
+
+<div class="forms">
+  <%= form_for([@project, @task]) do |f| %>
+    <%= f.text_field :content, placeholder: "Edit Task"%>
+    <%= f.submit "Update task" %>
+  <% end %>
+</div>

@@ -7,6 +7,20 @@ class TasksController < ApplicationController
     redirect_to @project
   end
 
+  def edit
+    
+  end
+
+  def update
+    
+    
+    if @task.update(task_params)
+      redirect_to @project
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     
     if @task.destroy
