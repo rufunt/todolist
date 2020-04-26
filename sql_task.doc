@@ -18,7 +18,7 @@ INNER JOIN projects ON project_id = projects.id GROUP BY projects.name ORDER BY 
 3. get the count of all tasks in each project, order by projects names
 
 SELECT COUNT(*) AS amount, projects.name FROM tasks 
-INNER JOIN projects ON project_id = projects.id GROUP BY projects.name ORDER BY projects.name ASC;
+INNER JOIN projects ON project_id = projects.id GROUP BY projects.name ORDER BY projects.name;
 
 4. get the tasks for all projects having the name beginning with "N" letter
 
