@@ -22,7 +22,7 @@ INNER JOIN projects ON project_id = projects.id GROUP BY projects.name ORDER BY 
 
 4. get the tasks for all projects having the name beginning with "N" letter
 
-SELECT * FROM tasks 
+SELECT tasks.name FROM tasks 
 JOIN projects ON project_id = projects.id
 WHERE projects.name like 'N%';
 
