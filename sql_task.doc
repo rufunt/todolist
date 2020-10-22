@@ -11,18 +11,20 @@ SELECT DISTINCT status FROM tasks ORDER BY status;
 
 2. get the count of all tasks in each project, order by tasks count descending
 
-SELECT COUNT(*) AS amount, projects.name FROM tasks INNER JOIN projects 
-ON project_id = projects.id GROUP BY projects.name ORDER BY amount DESC;
+SELECT COUNT(*) AS amount, projects.name FROM tasks 
+INNER JOIN projects ON project_id = projects.id GROUP BY projects.name ORDER BY amount DESC;
 
 
 3. get the count of all tasks in each project, order by projects names
 
-SELECT COUNT(*) AS amount, projects.name FROM tasks INNER JOIN projects 
-ON project_id = projects.id GROUP BY projects.name ORDER BY projects.name ASC;
+SELECT COUNT(*) AS amount, projects.name FROM tasks 
+INNER JOIN projects ON project_id = projects.id GROUP BY projects.name ORDER BY projects.name;
 
 4. get the tasks for all projects having the name beginning with "N" letter
 
-SELECT * FROM tasks WHERE name like 'N%';
+SELECT tasks.name FROM tasks 
+JOIN projects ON project_id = projects.id
+WHERE projects.name like 'N%';
 
 5. get the list of all projects containing the 'a' letter in the middle of
 the name, and show the tasks count near each project. Mention
@@ -34,15 +36,18 @@ WHERE projects.name LIKE '%a%' GROUP BY projects.name;
 
 6. get the list of tasks with duplicate names. Order alphabetically
 
-SELECT tasks.name, tasks.id FROM tasks INNER JOIN 
-(SELECT id, name FROM tasks GROUP BY name HAVING count(id) > 1) dup ON tasks.name = dup.name ORDER BY tasks.name ;
+SELECT tasks_duplicate.name FROM tasks 
+JOIN ((SELECT id, name FROM tasks GROUP BY name HAVING count(id) > 1) AS tasks_duplicate) 
+ON tasks.name = tasks_duplicate.name ORDER BY tasks_duplicate.name;
 
 7. get list of tasks having several exact matches of both name and
 status, from the project 'Garage'. Order by matches count
 
-#не успел разобраться
 
 8. get the list of project names having more than 10 tasks in status
 'completed'. Order by project_id
 
-#не успел разобраться
+SELECT name FROM (SELECT projects.name, count(tasks.*) 
+FROM projects, tasks WHERE tasks.status = 'completed' 
+AND projects.projects_id = tasks.project_id GROUP BY projects.name) 
+WHERE tasks > 10
