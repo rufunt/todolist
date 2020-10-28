@@ -21,6 +21,7 @@
   </div>
   <div class="todo_item">
     <p class="priority_<%= task.priority %>"><%= task.content %> <%= link_to edit_project_task_path(@project, task.id) do%><i class="fa fa-pencil" aria-hidden="true"></i>
+      <i style="float: right"><%= task.deadline.strftime("%d/%m/%y") %></i>
       <% end %>
     </p>
   </div>

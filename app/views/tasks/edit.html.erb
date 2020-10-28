@@ -1,12 +1,9 @@
 <h1 class="todo_list_title">Edit Task</h1>
-
 <div class="forms">
   <%= form_for([@project, @task]) do |f| %>
   <%= f.text_field :content, placeholder: "Edit Task"%>
-  <i class="fa fa-tasks" aria-hidden="true"></i>
   <%= f.select :priority, Task::PRIORITIES %>
-  <i class="fa fa-calendar" aria-hidden="true"></i>
-
+  <%= f.text_field :deadline, type: "date" %><br><br>
   <%= f.submit "Update task" %>
   <% end %>
 </div>

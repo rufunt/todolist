@@ -5,7 +5,7 @@
 
 
 <div id="todo_items_wrapper">
-  <%= render @project.tasks.order(:completed_at, priority: :desc ) %>
+  <%= render @project.tasks.order(:completed_at, priority: :desc) %>
   <div id="form">
     <%= render "tasks/form" %>
   </div>

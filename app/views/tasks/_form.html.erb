@@ -1,7 +1,9 @@
-<%= form_for([@project, @project.tasks.build]) do |f| %>
-<%= f.text_field :content, placeholder: "New Task"%>
-<i class="fa fa-tasks" aria-hidden="true"></i>
-<%= f.select :priority, Task::PRIORITIES %>
-<i class="fa fa-calendar" aria-hidden="true"></i>
-<%= f.submit %>
-<% end %>
+<div>
+  <%= form_for([@project, @project.tasks.build]) do |f| %>
+  <%= f.text_field :content, placeholder: "New Task"%>
+  <%= f.select :priority, Task::PRIORITIES %>
+  <%= f.text_field :deadline, type: "date" %>
+
+  <%= f.submit %>
+  <% end %>
+</div>

@@ -37,6 +37,7 @@ class TasksController < ApplicationController
     redirect_to @project, notice: "Task Completed"
   end
 
+
   private
 
   def set_project
@@ -44,7 +45,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params[:task].permit(:content,:priority)
+    params[:task].permit(:content,:priority,:deadline)
   end
 
   def set_task
