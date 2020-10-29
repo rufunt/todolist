@@ -34,6 +34,7 @@ class TasksController < ApplicationController
 
   def complete
     @task.update_attribute(:completed_at, Time.now)
+    @task.priority = 0
     redirect_to @project, notice: "Task Completed"
   end
 
